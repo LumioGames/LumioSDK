@@ -2,7 +2,7 @@
 
 <a href="https://lumiogames.cn/studio/"><img src=".github/readme/hero.zh-CN.svg" width="100%" alt="LumioGames 出品 · Lumio SDK：一个 npm 包，把 H5 游戏接上 Lumio 平台"></a>
 
-**[开发者中心 lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; [English](README.md) &nbsp;·&nbsp; 简体中文
+**[开发者中心 lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; **[空白游戏模板](https://github.com/LumioGames/LumioTemplate)** &nbsp;·&nbsp; [English](README.en.md) &nbsp;·&nbsp; 简体中文
 
 [![LumioGames 出品](https://img.shields.io/badge/LumioGames-%E5%87%BA%E5%93%81-6659DB?style=flat-square&labelColor=171C34&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iOTYiIGhlaWdodD0iOTYiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzY2NTlkYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlhYTZmZiIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMjkiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyNSIgeT0iMjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNDIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI0NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjYiLz48cmVjdCB4PSI2NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiM1ZGUyYzYiLz48cGF0aCBkPSJNNzAgMTlDNzEuNTYgMjguMSA3My45IDMwLjQ0IDgzIDMyQzczLjkgMzMuNTYgNzEuNTYgMzUuOSA3MCA0NUM2OC40NCAzNS45IDY2LjEgMzMuNTYgNTcgMzJDNjYuMSAzMC40NCA2OC40NCAyOC4xIDcwIDE5WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo%3D)](https://lumiogames.cn/)
 [![npm](https://img.shields.io/npm/v/@lumiogames/sdk?style=flat-square&color=6659DB&labelColor=171C34)](https://www.npmjs.com/package/@lumiogames/sdk)
@@ -248,6 +248,7 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 | :-- | :-- |
 | [开发者中心](https://lumiogames.cn/studio/)「文档与 Lumio SDK」 | 完整能力说明、作者 API 发布流程 |
 | [模拟器示例](examples/simulator-save-leaderboard/index.mjs) | 存档、冲突、排行榜、未开放能力的返回 |
+| [LumioTemplate](https://github.com/LumioGames/LumioTemplate) | 空白游戏模板，点 Use this template 开始 |
 | [更新记录](CHANGELOG.md) · [参与贡献](CONTRIBUTING.md) | |
 
 ## 许可

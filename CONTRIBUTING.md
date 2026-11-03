@@ -2,7 +2,7 @@
 
 ## 仓库里有什么
 
-- `README.md`、`README.zh-CN.md`：使用说明（英文、中文）。两份内容要一致，改一份同时改另一份。
+- `README.md`、`README.en.md`：使用说明（中文、英文）。两份内容要一致，改一份同时改另一份。
 - `examples/`：可直接运行的示例，依赖 npm 上已发布的 `@lumiogames/sdk`。
 - `CHANGELOG.md`：每个 SDK 版本的变化。
 - `scripts/readme-art/`：生成 README 用的图片，输出到 `.github/readme/`。图片不手改，改脚本后运行 `node scripts/readme-art/build.mjs`。

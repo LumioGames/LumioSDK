@@ -2,7 +2,7 @@
 
 <a href="https://lumiogames.cn/studio/"><img src=".github/readme/hero.en.svg" width="100%" alt="Made by LumioGames · Lumio SDK: one npm package connects your H5 game to the Lumio platform"></a>
 
-**[Developer Center lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; English &nbsp;·&nbsp; [简体中文](README.zh-CN.md)
+**[Developer Center lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; **[Blank game template](https://github.com/LumioGames/LumioTemplate)** &nbsp;·&nbsp; English &nbsp;·&nbsp; [简体中文](README.md)
 
 [![Made by LumioGames](https://img.shields.io/badge/made%20by-LumioGames-6659DB?style=flat-square&labelColor=171C34&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iOTYiIGhlaWdodD0iOTYiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzY2NTlkYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlhYTZmZiIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMjkiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyNSIgeT0iMjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNDIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI0NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjYiLz48cmVjdCB4PSI2NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiM1ZGUyYzYiLz48cGF0aCBkPSJNNzAgMTlDNzEuNTYgMjguMSA3My45IDMwLjQ0IDgzIDMyQzczLjkgMzMuNTYgNzEuNTYgMzUuOSA3MCA0NUM2OC40NCAzNS45IDY2LjEgMzMuNTYgNTcgMzJDNjYuMSAzMC40NCA2OC40NCAyOC4xIDcwIDE5WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo%3D)](https://lumiogames.cn/)
 [![npm](https://img.shields.io/npm/v/@lumiogames/sdk?style=flat-square&color=6659DB&labelColor=171C34)](https://www.npmjs.com/package/@lumiogames/sdk)
@@ -248,6 +248,7 @@ To upload:
 | :-- | :-- |
 | "Docs and Lumio SDK" on the [Developer Center](https://lumiogames.cn/studio/) | Full feature reference and the author API publishing flow |
 | [Simulator example](examples/simulator-save-leaderboard/index.mjs) | Saves, conflicts, leaderboards, and what closed features return |
+| [LumioTemplate](https://github.com/LumioGames/LumioTemplate) | Blank game template; click Use this template to start |
 | [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) | |
 
 ## License
