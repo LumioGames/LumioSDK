@@ -76,17 +76,17 @@ friends platform.not_granted
 > 按顺序做。任何一步失败都停下，把错误原文告诉用户，不要跳过。
 >
 > 1. 运行 `node -v`，要求 24.18 或更高、低于 25。没有就请用户自己装，不要替用户装。
-> 2. 在用户的游戏工程里运行 `npm i @lumiogames/sdk@2.10.1`。工程要用打包工具（Vite、esbuild、webpack 等）构建成静态文件。
+> 2. 在用户的游戏工程里运行 `npm i @lumiogames/sdk@2.11.1`。工程要用打包工具（Vite、esbuild、webpack 等）构建成静态文件。
 > 3. 先接本地模拟器：在开发页面里用 `createLumioSimulator()`（入口 `@lumiogames/sdk/simulator`），把存档、排行榜等逻辑跑通。
 > 4. 再接正式平台：用 `connectLumioFromLaunch()`（入口 `@lumiogames/sdk`）。连接失败要显示错误，不要自动换成模拟器。
 > 5. 每个调用都检查 `ok`；失败时看 `failure.code`，写存档还要检查 `value.conflict`。不要伪造成功。
-> 6. 在包根目录写 `lumio.json`，声明用到的能力、存档槽和上榜字段；入口 HTML 保留 `./lumio-bootstrap.js` 的引用。写法见本 README「打包上传」一节。
+> 6. 在包根目录写 `lumio.json`，声明用到的能力、存档槽和上榜字段；入口 HTML 不需要引用 `lumio-bootstrap.js`。写法见本 README「打包上传」一节。
 > 7. 只用下面「功能」表里开放的能力。好友、私信、联机暂不开放。
 
 自己装：
 
 ```sh
-npm i @lumiogames/sdk@2.10.1
+npm i @lumiogames/sdk@2.11.1
 ```
 
 | 入口 | 用途 |
@@ -143,6 +143,7 @@ lumio.dispose();
 
 - 游戏没有账号密码登录接口，登录和授权界面由平台负责。游戏只拿到本游戏的 `gp_…` 玩家号和玩家同意给的资料，拿不到账号、UID、邮箱、Cookie 或入局票据。
 - 调用前可以看 `lumio.session.capabilities`：`available` 可用，`not_granted` 未授权，`not_wired` 未接通。
+- 加载页：SDK 连上后自动按已下载的字节显示下载进度，并把页面报错上报给平台。想自己报进度，调用 `lumio.loading.progress(loaded, total)`；想让加载页一直显示到资源准备好，连接时传 `connectLumioFromLaunch({ loading: 'manual' })`，准备好后调用 `lumio.loading.ready()`。
 
 ### 云存档和冲突
 
@@ -199,20 +200,7 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 - 上榜字段必须写数值范围和每分钟提交次数。
 - 外部网络请求只列精确的 `https://` 或 `wss://` 地址，不写通配符或平台域名。
 
-入口 HTML 必须引用平台握手脚本，接不接 SDK 都要：
-
-```html
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <script src="./lumio-bootstrap.js"></script>
-</head>
-<body><main id="game"></main></body>
-</html>
-```
-
-`lumio-bootstrap.js` 由平台在上线时放进包根目录，ZIP 里不要放这个文件，构建时也不要让打包工具删掉或合并这行引用。入口在子目录时按层级写相对路径，例如 `nested/index.html` 写 `../lumio-bootstrap.js`；不要写成 `/lumio-bootstrap.js`。
+入口 HTML 不需要引用平台启动脚本 `lumio-bootstrap.js`，接 SDK 2.11 及以上的游戏由 SDK 负责加载页进度和报错上报。已有的引用可以保留。包根路径 `lumio-bootstrap.js` 由平台保留，ZIP 里不要放同名文件。
 
 上传步骤：
 
@@ -228,7 +216,6 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 | `failure.code` 为 `platform.not_granted` | 没有权限：玩家没授权、是游客，或这个能力不对第三方开放 | 提示玩家登录或授权；暂不开放的能力不要调用 |
 | `failure.code` 为 `platform.not_wired` | 当前环境没有接通这个能力 | 显示明确提示，不要伪造成功 |
 | `save.write` 返回 `ok: true` 但有 `value.conflict` | 云端存档比你读到的新 | 保留当前进度，重新读取，让玩家选择 |
-| 上传时报 `package.bootstrap_missing` | 入口 HTML 没有引用 `lumio-bootstrap.js` | 按上面的写法加回引用 |
 
 ## 已知限制
 
@@ -240,7 +227,7 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 
 - SDK 只通过 npm 发布。每个版本发布后内容不再改动，修复和新功能都会出新版本。
 - 安装时写完整版本号，升级由你决定：`npm outdated` 能看到有没有新版本。想让 `package.json` 也锁死版本，加 `--save-exact`。
-- 每个版本的变化写在[更新记录](CHANGELOG.md)，本仓库会为每个版本打一个同名 tag（如 `v2.10.1`）。
+- 每个版本的变化写在[更新记录](CHANGELOG.md)，本仓库会为每个版本打一个同名 tag（如 `v2.11.1`）。
 
 ## 文档
 

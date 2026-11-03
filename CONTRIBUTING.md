@@ -23,4 +23,4 @@ SDK 源码不在这个仓库。SDK 本身的问题请提 Issue，修复会随新
 1. `CHANGELOG.md` 加一节新版本。
 2. 两份 README 里的安装命令换成新版本号。
 3. 在 `examples/simulator-save-leaderboard` 里运行 `npm i --save-exact @lumiogames/sdk@<新版本>`，再运行 `npm start`；输出有变化就同步到 README。
-4. 提交后打同名 tag（如 `v2.10.1`）并推送。
+4. 提交后打同名 tag（如 `v2.11.1`）并推送。

@@ -76,17 +76,17 @@ The block below is written for the agent.
 > Go in order. If any step fails, stop and show the user the exact error. Do not skip steps.
 >
 > 1. Run `node -v`. It must be 24.18 or later and below 25. If not, ask the user to install it; do not install it for them.
-> 2. In the user's game project, run `npm i @lumiogames/sdk@2.10.1`. The project must be built into static files with a bundler (Vite, esbuild, webpack and so on).
+> 2. In the user's game project, run `npm i @lumiogames/sdk@2.11.1`. The project must be built into static files with a bundler (Vite, esbuild, webpack and so on).
 > 3. Start with the local simulator: use `createLumioSimulator()` (entry `@lumiogames/sdk/simulator`) on the dev page and get saves, leaderboards and other logic working.
 > 4. Then connect to the platform with `connectLumioFromLaunch()` (entry `@lumiogames/sdk`). If the connection fails, show the error; never fall back to the simulator.
 > 5. Check `ok` on every call. On failure read `failure.code`; on save writes also check `value.conflict`. Never fake success.
-> 6. Write `lumio.json` at the package root declaring the capabilities, save slots and leaderboard fields in use, and keep the `./lumio-bootstrap.js` reference in the entry HTML. See "Packaging and upload" in this README.
+> 6. Write `lumio.json` at the package root declaring the capabilities, save slots and leaderboard fields in use. The entry HTML does not need to reference `lumio-bootstrap.js`. See "Packaging and upload" in this README.
 > 7. Use only the features marked available in the Features tables. Friends, direct messages and multiplayer are not open yet.
 
 By hand:
 
 ```sh
-npm i @lumiogames/sdk@2.10.1
+npm i @lumiogames/sdk@2.11.1
 ```
 
 | Entry | Use |
@@ -143,6 +143,7 @@ lumio.dispose();
 
 - There is no username/password sign-in API for games; the platform owns the sign-in and consent screens. Your game gets a `gp_…` player ID for your game and the profile the player agreed to share. It never gets the account ID, UID, email, cookies or match tickets.
 - Check `lumio.session.capabilities` before calling: `available` works, `not_granted` is not permitted, `not_wired` is not connected.
+- Loading screen: once connected, the SDK shows download progress from the bytes downloaded so far and reports page errors to the platform. To report your own progress, call `lumio.loading.progress(loaded, total)`. To keep the loading screen up until your assets are ready, connect with `connectLumioFromLaunch({ loading: 'manual' })` and call `lumio.loading.ready()` when ready.
 
 ### Cloud saves and conflicts
 
@@ -199,20 +200,7 @@ Put `index.html`, `lumio.json` and the files the game needs at the root of the Z
 - Leaderboard fields must have a value range and a per-minute submit limit.
 - List external network origins as exact `https://` or `wss://` addresses, with no wildcards and no platform domains.
 
-The entry HTML must reference the platform's handshake script, whether or not you use the SDK:
-
-```html
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <script src="./lumio-bootstrap.js"></script>
-</head>
-<body><main id="game"></main></body>
-</html>
-```
-
-The platform puts `lumio-bootstrap.js` at the package root when the game goes live. Do not include the file in your ZIP, and do not let your bundler remove or inline the reference. If the entry is in a subfolder, use a relative path, for example `../lumio-bootstrap.js` for `nested/index.html`; never `/lumio-bootstrap.js`.
+The entry HTML does not need to reference the platform's startup script `lumio-bootstrap.js`; with SDK 2.11 or later, the SDK handles loading-screen progress and error reports. An existing reference can stay. The platform reserves the package-root path `lumio-bootstrap.js`, so do not put a file with that name in your ZIP.
 
 To upload:
 
@@ -228,7 +216,6 @@ To upload:
 | `failure.code` is `platform.not_granted` | No permission: the player has not agreed, is a guest, or the feature is not open to third parties | Ask the player to sign in or agree; do not call features that are not available yet |
 | `failure.code` is `platform.not_wired` | The feature is not connected in this environment | Show a clear message; do not fake success |
 | `save.write` returns `ok: true` with `value.conflict` | The cloud save is newer than the one you read | Keep current progress, read again, let the player choose |
-| Upload fails with `package.bootstrap_missing` | The entry HTML does not reference `lumio-bootstrap.js` | Add the reference back as shown above |
 
 ## Known limits
 
@@ -240,7 +227,7 @@ To upload:
 
 - The SDK is published only on npm. A published version never changes; fixes and new features come as new versions.
 - Install with a full version number and upgrade when you choose; `npm outdated` shows whether a newer one exists. Add `--save-exact` to pin it in `package.json` too.
-- Each version's changes are in the [changelog](CHANGELOG.md), and this repository tags each version with the same name (for example `v2.10.1`).
+- Each version's changes are in the [changelog](CHANGELOG.md), and this repository tags each version with the same name (for example `v2.11.1`).
 
 ## Docs
 

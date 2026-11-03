@@ -3,6 +3,20 @@
 SDK 通过 npm 发布：`@lumiogames/sdk`。发布后的版本不再改动。
 Published on npm as `@lumiogames/sdk`. Published versions never change.
 
+## 2.11.1（2026-11-03）
+
+- 修复：iPhone Safari 和微信内置浏览器里，游戏连不上平台、返回 `platform.not_granted`。原因是这些浏览器给游戏页的 `document.referrer` 为空；现在 referrer 为空时改用浏览器提供的 `location.ancestorOrigins` 识别平台，仍要命中平台来源白名单，referrer 不为空时不受影响。
+- 包含 2.11.0 的改动（2.11.0 没有发布到 npm）：
+  - SDK 连上后自动显示加载页下载进度（按页面已下载字节和包大小计算），并把页面报错的类别上报给平台，不带报错文字和堆栈。游戏自己调用 `lumio.loading.progress()` 或 `ready()` 后自动计数停止。
+  - 连接时传 `loading: 'manual'`（如 `connectLumioFromLaunch({ loading: 'manual' })`），加载页会一直显示到游戏调用 `lumio.loading.ready()`。
+  - 入口 HTML 不再需要引用 `lumio-bootstrap.js`。
+
+- Fix: on iPhone Safari and the WeChat in-app browser, games could not connect and got `platform.not_granted`, because these browsers give the game page an empty `document.referrer`. When the referrer is empty, the SDK now identifies the platform from the browser's `location.ancestorOrigins`; it must still match the platform origin allow-list, and a non-empty referrer is used as before.
+- Includes the changes from 2.11.0 (2.11.0 was not published to npm):
+  - Once connected, the SDK shows loading-screen download progress (bytes the page has downloaded against the package size) and reports the kind of page errors to the platform, without error text or stack traces. The automatic count stops once the game calls `lumio.loading.progress()` or `ready()`.
+  - Connect with `loading: 'manual'` (for example `connectLumioFromLaunch({ loading: 'manual' })`) to keep the loading screen up until the game calls `lumio.loading.ready()`.
+  - The entry HTML no longer needs to reference `lumio-bootstrap.js`.
+
 ## 2.10.1（2026-10-30）
 
 首个对第三方游戏推荐的版本。
