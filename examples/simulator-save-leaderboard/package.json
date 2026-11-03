@@ -1,0 +1,11 @@
+{
+  "name": "lumio-sdk-example-simulator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@lumiogames/sdk": "2.10.1"
+  }
+}

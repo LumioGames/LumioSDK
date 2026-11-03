@@ -1,0 +1,38 @@
+name: Bug
+description: SDK 行为与文档不符 / The SDK does not behave as documented
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: SDK 版本 / SDK version
+      placeholder: "2.10.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: 出现在哪里 / Where
+      options:
+        - 本地模拟器 / Local simulator
+        - 正式平台 / Lumio platform
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤和代码 / Steps and code
+      description: 尽量给最少的代码。不要贴账号、Cookie、密钥。 / Minimal code, please. No accounts, cookies or keys.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果与实际结果 / Expected vs actual
+      description: 包括 failure.code 和控制台报错。 / Include failure.code and console errors.
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: 游戏链接或 gameKey（可选） / Game link or gameKey (optional)

@@ -1,0 +1,28 @@
+name: 接入问题 / Integration question
+description: 接入、lumio.json、打包上传遇到问题 / Help with setup, lumio.json or uploading
+labels: [question]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: SDK 版本 / SDK version
+      placeholder: "2.10.1"
+    validations:
+      required: true
+  - type: input
+    id: engine
+    attributes:
+      label: 引擎或框架 / Engine or framework
+      placeholder: "H5 / Phaser / Cocos / ..."
+  - type: textarea
+    id: question
+    attributes:
+      label: 想做什么、卡在哪一步 / What you are trying to do and where you are stuck
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: lumio.json、报错信息 / lumio.json and error messages
+      description: 不要贴账号、Cookie、密钥。 / No accounts, cookies or keys.
+      render: text
