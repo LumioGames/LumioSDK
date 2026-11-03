@@ -46,7 +46,7 @@ SDK 通过 npm 发布，自带 TypeScript 类型声明和本地模拟器，不�
 ## 安装
 
 ```sh
-npm i --save-exact @lumiogames/sdk@2.10.1
+npm i @lumiogames/sdk@2.10.1
 ```
 
 包要求 Node 24.18 或更高（低于 25）。游戏用打包工具（Vite、esbuild、webpack 等）构建成静态文件再上传，玩家浏览器不会读取 `node_modules`。
@@ -232,7 +232,7 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 ## 版本和更新
 
 - SDK 只通过 npm 发布。每个版本发布后内容不再改动，修复和新功能都会出新版本。
-- 安装时写完整版本号（`--save-exact`），升级由你决定：`npm outdated` 能看到有没有新版本。
+- 安装时写完整版本号；想让 `package.json` 也锁死版本，加 `--save-exact`。升级由你决定：`npm outdated` 能看到有没有新版本。
 - 每个版本的变化写在 [CHANGELOG.md](CHANGELOG.md)，本仓库会为每个版本打一个同名 tag（如 `v2.10.1`）。
 
 ## 反馈

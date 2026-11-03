@@ -46,7 +46,7 @@ The package contains other methods too. Having a method does not mean having per
 ## Install
 
 ```sh
-npm i --save-exact @lumiogames/sdk@2.10.1
+npm i @lumiogames/sdk@2.10.1
 ```
 
 The package needs Node 24.18 or later (below 25). Build your game into static files with a bundler (Vite, esbuild, webpack and so on) before uploading; players' browsers never read `node_modules`.
@@ -232,7 +232,7 @@ To skip project setup, start from the [blank template lumio-game-starter](https:
 ## Versions and updates
 
 - The SDK is published only on npm. A published version never changes; fixes and new features come as new versions.
-- Install an exact version (`--save-exact`) and upgrade when you choose; `npm outdated` shows whether a newer one exists.
+- Install with a full version number; add `--save-exact` to pin it in `package.json` too. Upgrade when you choose; `npm outdated` shows whether a newer one exists.
 - Each version's changes are in [CHANGELOG.md](CHANGELOG.md), and this repository tags each version with the same name (for example `v2.10.1`).
 
 ## Feedback
