@@ -68,7 +68,7 @@ npm install
 npm start
 ```
 
-Output (the player ID is random each run):
+Output (the player ID is a local one made by the simulator):
 
 ```text
 read    null

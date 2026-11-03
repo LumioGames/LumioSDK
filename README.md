@@ -68,7 +68,7 @@ npm install
 npm start
 ```
 
-输出（玩家号每次随机）：
+输出（玩家号是模拟器生成的本地号）：
 
 ```text
 read    null
