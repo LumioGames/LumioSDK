@@ -1,65 +1,41 @@
 <div align="center">
 
-# Lumio SDK
+<a href="https://lumiogames.cn/studio/"><img src=".github/readme/hero.en.svg" width="100%" alt="Made by LumioGames · Lumio SDK: one npm package connects your H5 game to the Lumio platform"></a>
 
-**把 H5 游戏接入 [Lumio](https://lumiogames.cn/) 平台：登录、玩家资料、云存档、排行榜、成就、聊天。**
+**[Developer Center lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; English &nbsp;·&nbsp; [简体中文](README.zh-CN.md)
 
-**[开发者中心](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[QQ 群 972220164](https://qm.qq.com/q/PGkXh4tCyQ)** &nbsp;·&nbsp; **[空白模板 lumio-game-starter](https://github.com/LumioGames/lumio-game-starter)** &nbsp;·&nbsp; 简体中文 &nbsp;·&nbsp; [English](README.en.md)
-
+[![Made by LumioGames](https://img.shields.io/badge/made%20by-LumioGames-6659DB?style=flat-square&labelColor=171C34&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iOTYiIGhlaWdodD0iOTYiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzY2NTlkYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlhYTZmZiIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMjkiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyNSIgeT0iMjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNDIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI0NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjYiLz48cmVjdCB4PSI2NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiM1ZGUyYzYiLz48cGF0aCBkPSJNNzAgMTlDNzEuNTYgMjguMSA3My45IDMwLjQ0IDgzIDMyQzczLjkgMzMuNTYgNzEuNTYgMzUuOSA3MCA0NUM2OC40NCAzNS45IDY2LjEgMzMuNTYgNTcgMzJDNjYuMSAzMC40NCA2OC40NCAyOC4xIDcwIDE5WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo%3D)](https://lumiogames.cn/)
 [![npm](https://img.shields.io/npm/v/@lumiogames/sdk?style=flat-square&color=6659DB&labelColor=171C34)](https://www.npmjs.com/package/@lumiogames/sdk)
-[![node](https://img.shields.io/badge/node-24.18%2B-5DE2C6?style=flat-square&labelColor=171C34)](https://nodejs.org/)
-[![types](https://img.shields.io/badge/types-included-9AA6FF?style=flat-square&labelColor=171C34)](#安装)
-[![license](https://img.shields.io/badge/license-待定-AEB5D6?style=flat-square&labelColor=171C34)](#许可)
+[![node](https://img.shields.io/badge/node-%E2%89%A524.18-5DE2C6?style=flat-square&labelColor=171C34)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-types%20included-9AA6FF?style=flat-square&labelColor=171C34)](#install)
+[![license](https://img.shields.io/badge/license-PolyForm%20Shield%20%2B%20extra%20grant-AEB5D6?style=flat-square&labelColor=171C34)](#license)
 
 </div>
 
+<h3 align="center">Join the developer community</h3>
+
+<p align="center">
+  <a href="https://qm.qq.com/q/PGkXh4tCyQ"><img src=".github/readme/qr-qq.en.svg" width="250" alt="Scan or click to join QQ group 972220164"></a>
+  <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b24vf257-5a2b-41ce-935e-bc4ce19dc396"><img src=".github/readme/qr-feishu.en.svg" width="250" alt="Scan or click to join the LumioGame community on Feishu"></a>
+</p>
+
 ---
 
-## 这是什么
+## What Lumio SDK is
 
-`@lumiogames/sdk` 是 Lumio 平台给第三方游戏用的 SDK。游戏跑在平台的游玩页里，SDK 通过它和平台通信：玩家登录由平台负责，游戏只拿到本游戏的玩家号和玩家同意给的资料；存档、排行榜、成就等数据存在平台上。
+Lumio SDK (npm package `@lumiogames/sdk`) is the platform SDK from [LumioGames](https://lumiogames.cn/) for H5 games that want to publish on Lumio.
 
-SDK 通过 npm 发布，自带 TypeScript 类型声明和本地模拟器，不依赖平台或引擎源码。本仓库放的是使用说明、可运行的示例、更新记录和问题反馈入口；SDK 源码不在这里。
+Your game runs inside Lumio's play page and talks to the platform through the SDK. The platform handles sign-in; your game only gets a player ID for your game and the profile the player agrees to share. Cloud saves, leaderboards and achievements are stored by the platform, so you do not run your own server for them.
 
-## 开放能力
-
-首版对第三方游戏开放下表左侧的能力。
-
-| 开放 | 接口 | `lumio.json` 声明 |
+| <img src=".github/readme/icon-simulator.svg" width="56" alt=""><br>**Works locally first** | <img src=".github/readme/icon-connect.svg" width="56" alt=""><br>**One call to connect** | <img src=".github/readme/icon-errors.svg" width="56" alt=""><br>**Clear errors** |
 | :-- | :-- | :-- |
-| 登录状态 | `lumio.session`（`signedIn`、`capabilities`） | `identity.basic` |
-| 玩家资料（需玩家授权） | `players.requestProfile()`、`players.get()` | `identity.profile` |
-| 云存档 | `save.read()`、`save.write()` | `save` |
-| 游戏数据 | `data.read()`、`data.write()` | `data` |
-| 排行榜 | `leaderboard.submit()`、`leaderboard.query()` | `leaderboard` |
-| 成就 | `achievements.list()`、`achievements.unlock()` | `achievement` |
-| 当前游戏公屏、房间聊天 | `chat.send()`、`chat.history()`、`chat.onMessage()` | `chat.game` |
+| A built-in simulator lets you try saves and leaderboards in Node or a browser, with no sign-in and no network. | `connectLumioFromLaunch()` reads the current game and version from the launch URL, so nothing is hard-coded before upload. | No permission returns `platform.not_granted`, not connected returns `platform.not_wired`, and save conflicts are reported separately. Nothing fakes success. |
 
-| 暂不开放 | 说明 |
-| :-- | :-- |
-| 好友 | 只给平台自己的应用用，第三方调用返回 `platform.not_granted` |
-| 私信 | 同上；在 `lumio.json` 里声明 `chat.direct` 也不会获得权限 |
-| 联机 | 房间聊天要求玩家真的在房间里，不能用来创建联机房间 |
+The SDK is published on npm with TypeScript declarations and does not depend on platform or engine source. This repository holds the guide, runnable examples and the changelog, and is where you report problems.
 
-发行包里还有其他方法，有方法不代表有权限，以上表为准。游客（未登录玩家）不能写云存档、排行榜和社交数据。
+## 30-second start
 
-## 安装
-
-```sh
-npm i @lumiogames/sdk@2.10.1
-```
-
-包要求 Node 24.18 或更高（低于 25）。游戏用打包工具（Vite、esbuild、webpack 等）构建成静态文件再上传，玩家浏览器不会读取 `node_modules`。
-
-| 入口 | 用途 |
-| :-- | :-- |
-| `@lumiogames/sdk` | 正式平台连接：`connectLumioFromLaunch()` |
-| `@lumiogames/sdk/simulator` | 本地模拟器：`createLumioSimulator()` |
-| `@lumiogames/sdk/adapters` | Cocos、Phaser、Godot、Unity 的轻量适配 |
-
-## 30 秒上手：本地模拟器
-
-模拟器不需要登录平台，也不联网，适合先把存档和排行榜逻辑写通。
+No sign-up, no sign-in. See how saves and leaderboards work in the local simulator first:
 
 ```sh
 git clone https://github.com/LumioGames/LumioSDK.git
@@ -68,7 +44,7 @@ npm install
 npm start
 ```
 
-输出（玩家号是模拟器生成的本地号）：
+Output (the player ID is a local one made by the simulator):
 
 ```text
 read    null
@@ -87,39 +63,67 @@ top     [
 friends platform.not_granted
 ```
 
-代码见 [examples/simulator-save-leaderboard/index.mjs](examples/simulator-save-leaderboard/index.mjs)，核心几行：
+The example reads a new save slot, writes it, writes again with a stale revision (a conflict; the cloud copy is not overwritten), submits a score and queries the leaderboard, and finally calls the friends API that is not open yet (`platform.not_granted`). The code is in [examples/simulator-save-leaderboard/index.mjs](examples/simulator-save-leaderboard/index.mjs).
 
-```js
-import { createLumioSimulator } from '@lumiogames/sdk/simulator';
+## Install
 
-const lumio = await createLumioSimulator({ gameKey: 'g-abcdefghij', versionId: 'local' });
-try {
-  const saved = await lumio.save.read('progress');
-  if (!saved.ok) throw new Error(saved.failure.code);
-  const written = await lumio.save.write('progress', { level: 2 }, {
-    expectedRevision: saved.value?.revision ?? null,
-  });
-  if (!written.ok) throw new Error(written.failure.code);
-  if ('conflict' in written.value) throw new Error('Save conflict');
+The easiest way: give this repository's address to your agent (Claude Code or Codex) and say "connect my game to Lumio SDK following the README".
 
-  const submitted = await lumio.leaderboard.submit('stats.bestScore', 100);
-  if (!submitted.ok) throw new Error(submitted.failure.code);
-  const top = await lumio.leaderboard.query('stats.bestScore', { kind: 'top', limit: 10 });
-  if (!top.ok) throw new Error(top.failure.code);
-} finally {
-  lumio.dispose();
-}
+The block below is written for the agent.
+
+> **For AI agents: integrating Lumio SDK**
+>
+> Go in order. If any step fails, stop and show the user the exact error. Do not skip steps.
+>
+> 1. Run `node -v`. It must be 24.18 or later and below 25. If not, ask the user to install it; do not install it for them.
+> 2. In the user's game project, run `npm i @lumiogames/sdk@2.10.1`. The project must be built into static files with a bundler (Vite, esbuild, webpack and so on).
+> 3. Start with the local simulator: use `createLumioSimulator()` (entry `@lumiogames/sdk/simulator`) on the dev page and get saves, leaderboards and other logic working.
+> 4. Then connect to the platform with `connectLumioFromLaunch()` (entry `@lumiogames/sdk`). If the connection fails, show the error; never fall back to the simulator.
+> 5. Check `ok` on every call. On failure read `failure.code`; on save writes also check `value.conflict`. Never fake success.
+> 6. Write `lumio.json` at the package root declaring the capabilities, save slots and leaderboard fields in use, and keep the `./lumio-bootstrap.js` reference in the entry HTML. See "Packaging and upload" in this README.
+> 7. Use only the features marked available in the Features tables. Friends, direct messages and multiplayer are not open yet.
+
+By hand:
+
+```sh
+npm i @lumiogames/sdk@2.10.1
 ```
 
-模拟器的注意事项：
+| Entry | Use |
+| :-- | :-- |
+| `@lumiogames/sdk` | Production connection: `connectLumioFromLaunch()` |
+| `@lumiogames/sdk/simulator` | Local simulator: `createLumioSimulator()` |
+| `@lumiogames/sdk/adapters` | Small adapters for Cocos, Phaser, Godot and Unity |
 
-- 所有结果都带 `simulated: true`，数据只在内存里，刷新页面或重建模拟器就清空。
-- 模拟器不会完整执行线上的声明、权限、配额和频率检查，上线前要上传真实游戏包验证。
-- 开发第三方游戏时不要打开 `firstParty` 选项。
+The package needs Node 24.18 or later (below 25), only for development and builds. You upload the built static files; players' browsers never read `node_modules`.
 
-## 接入正式平台
+## Features
 
-游戏在平台游玩页里运行时，用 `connectLumioFromLaunch()` 连接。它从启动地址读取当前游戏和版本，上传前不需要写死版本号。
+### Available
+
+| Feature | API | `lumio.json` capability |
+| :-- | :-- | :-- |
+| Sign-in state | `lumio.session` (`signedIn`, `capabilities`) | `identity.basic` |
+| Player profile | `players.requestProfile()`, `players.get()`; nickname and avatar only after the player agrees | `identity.profile` |
+| Cloud saves | `save.read()`, `save.write()`, with revisions; conflicts never overwrite the cloud copy | `save` |
+| Game data | `data.read()`, `data.write()` | `data` |
+| Leaderboards | `leaderboard.submit()`, `leaderboard.query()` | `leaderboard` |
+| Achievements | `achievements.list()`, `achievements.unlock()` | `achievement` |
+| Game-wide and room chat | `chat.send()`, `chat.history()`, `chat.onMessage()`; `global` is the current game's channel | `chat.game` |
+
+### Not available yet
+
+| Feature | Notes |
+| :-- | :-- |
+| Friends | Platform apps only; third-party calls return `platform.not_granted` |
+| Direct messages | Same; declaring `chat.direct` in `lumio.json` does not grant it |
+| Multiplayer | Room chat needs the player to actually be in a room; it cannot create multiplayer rooms |
+
+The package contains other methods too. Having a method does not mean having permission; the tables above are what is available. Guests (players who are not signed in) cannot write cloud saves, leaderboards or social data.
+
+## Connecting to the platform
+
+When your game runs in Lumio's play page, connect with `connectLumioFromLaunch()`:
 
 ```ts
 import { connectLumioFromLaunch } from '@lumiogames/sdk';
@@ -127,45 +131,44 @@ import { connectLumioFromLaunch } from '@lumiogames/sdk';
 const lumio = await connectLumioFromLaunch();
 
 if (!lumio.session.signedIn) {
-  // 游客：不能写云存档和排行榜，提示玩家登录
+  // Guest: cannot write cloud saves or leaderboards; ask the player to sign in
 }
 
-const profile = await lumio.players.requestProfile(); // 平台弹出授权，玩家同意后返回昵称和头像
+const profile = await lumio.players.requestProfile(); // the platform asks the player; on consent you get nickname and avatar
 if (!profile.ok) console.warn(profile.failure.code);
 
-// 场景卸载时释放连接、订阅和上传
+// When the scene unloads, release the connection, listeners and uploads
 lumio.dispose();
 ```
 
-- 连接失败时要显示错误，不要自动换成模拟器。
-- 游戏没有账号密码登录接口，登录和授权界面由平台负责。游戏只拿到本游戏的 `gp_…` 玩家号和玩家同意给的资料，拿不到账号、UID、邮箱、Cookie 或入局票据。
-- 调用前可以看 `lumio.session.capabilities`：`available` 可用，`not_granted` 未授权，`not_wired` 未接通。
+- There is no username/password sign-in API for games; the platform owns the sign-in and consent screens. Your game gets a `gp_…` player ID for your game and the profile the player agreed to share. It never gets the account ID, UID, email, cookies or match tickets.
+- Check `lumio.session.capabilities` before calling: `available` works, `not_granted` is not permitted, `not_wired` is not connected.
 
-### 云存档和冲突
+### Cloud saves and conflicts
 
 ```ts
 const saved = await lumio.save.read('progress');
 if (!saved.ok) throw new Error(saved.failure.code);
 
 const result = await lumio.save.write('progress', { level: 2 }, {
-  expectedRevision: saved.value?.revision ?? null, // 新槽用 null
+  expectedRevision: saved.value?.revision ?? null, // null for a new slot
 });
 if (!result.ok) throw new Error(result.failure.code);
 if ('conflict' in result.value) {
-  // 云端已有更新的存档：保留玩家当前进度，重新读取，让玩家选择用哪份
+  // The cloud has a newer save: keep the player's current progress, read again, let the player choose
   console.warn('Save conflict', result.value.conflict);
 }
 ```
 
-写存档要带上实际读到的 `expectedRevision`。`ok: true` 时也可能返回 `value.conflict`，这时不要自动覆盖云端。
+Pass the `expectedRevision` you actually read. A result with `ok: true` can still contain `value.conflict`; do not overwrite the cloud save automatically.
 
-### 排行榜
+### Leaderboards
 
-字段 `bestScore` 对应的排行榜名称是 `stats.bestScore`。客户端提交的分数 `verified` 为 `false`，只有平台服务端写入的成绩才显示「已验证」。
+The leaderboard for field `bestScore` is named `stats.bestScore`. Scores submitted by the client have `verified: false`; only scores written by the platform's game server show as verified.
 
-## `lumio.json` 和打包上传
+## Packaging and upload
 
-ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要再套一层项目文件夹。用到的能力、存档槽、上榜字段都要在 `lumio.json` 里声明：
+Put `index.html`, `lumio.json` and the files the game needs at the root of the ZIP, with no extra project folder around them. Declare every capability, save slot and leaderboard field you use in `lumio.json`:
 
 ```json
 {
@@ -192,11 +195,11 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 }
 ```
 
-- 普通 H5 游戏写 `engine: false`。`capabilities` 填能力名称；`sdk` 不是版本号字段。
-- 上榜字段必须写数值范围和每分钟提交次数。
-- 外部网络请求只列精确的 `https://` 或 `wss://` 地址，不写通配符或平台域名。
+- Plain H5 games use `engine: false`. `capabilities` lists capability names; `sdk` is not a version field.
+- Leaderboard fields must have a value range and a per-minute submit limit.
+- List external network origins as exact `https://` or `wss://` addresses, with no wildcards and no platform domains.
 
-入口 HTML 必须引用平台握手脚本，接不接 SDK 都要：
+The entry HTML must reference the platform's handshake script, whether or not you use the SDK:
 
 ```html
 <!doctype html>
@@ -209,38 +212,56 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 </html>
 ```
 
-`lumio-bootstrap.js` 由平台在上线时放进包根目录，ZIP 里不要放这个文件，构建时也不要让打包工具删掉或合并这行引用。入口在子目录时按层级写相对路径，例如 `nested/index.html` 写 `../lumio-bootstrap.js`；不要写成 `/lumio-bootstrap.js`。
+The platform puts `lumio-bootstrap.js` at the package root when the game goes live. Do not include the file in your ZIP, and do not let your bundler remove or inline the reference. If the entry is in a subfolder, use a relative path, for example `../lumio-bootstrap.js` for `nested/index.html`; never `/lumio-bootstrap.js`.
 
-上传步骤：
+To upload:
 
-1. 登录[开发者中心](https://lumiogames.cn/studio/)，完成作者申请，创建作品并填写资料。
-2. 在作品的「版本」页选择 ZIP，填写版本号和更新说明，点「上传版本」。
-3. 检查完成后选中草稿版本，点「提交审核」。
-4. 在版本记录里看审核结果和整改提示。提交成功不等于上线，以开发者中心显示的线上版本为准。
+1. Sign in to the [Developer Center](https://lumiogames.cn/studio/), apply as an author, create a game and fill in its details.
+2. On the game's Versions page, choose the ZIP, enter the version number and release notes, and click Upload.
+3. When the checks finish, select the draft version and click Submit for review.
+4. See the review result and any requested changes in the version history. Submitting is not the same as going live; the live version shown in the Developer Center is what players get.
 
-不想从零搭工程，可以直接用[空白模板 lumio-game-starter](https://github.com/LumioGames/lumio-game-starter)。
+## Common errors
 
-## 常见错误
-
-| 情况 | 含义 | 怎么办 |
+| What you see | Meaning | What to do |
 | :-- | :-- | :-- |
-| `failure.code` 为 `platform.not_granted` | 没有权限：玩家没授权、游客，或这个能力不对第三方开放 | 提示玩家登录或授权；暂不开放的能力不要调用 |
-| `failure.code` 为 `platform.not_wired` | 当前环境没有接通这个能力 | 显示明确提示，不要伪造成功 |
-| `save.write` 返回 `ok: true` 但有 `value.conflict` | 云端存档比你读到的新 | 保留当前进度，重新读取，让玩家选择 |
-| 上传时报 `package.bootstrap_missing` | 入口 HTML 没有引用 `lumio-bootstrap.js` | 按上面的写法加回引用 |
+| `failure.code` is `platform.not_granted` | No permission: the player has not agreed, is a guest, or the feature is not open to third parties | Ask the player to sign in or agree; do not call features that are not available yet |
+| `failure.code` is `platform.not_wired` | The feature is not connected in this environment | Show a clear message; do not fake success |
+| `save.write` returns `ok: true` with `value.conflict` | The cloud save is newer than the one you read | Keep current progress, read again, let the player choose |
+| Upload fails with `package.bootstrap_missing` | The entry HTML does not reference `lumio-bootstrap.js` | Add the reference back as shown above |
 
-## 版本和更新
+## Known limits
 
-- SDK 只通过 npm 发布。每个版本发布后内容不再改动，修复和新功能都会出新版本。
-- 安装时写完整版本号；想让 `package.json` 也锁死版本，加 `--save-exact`。升级由你决定：`npm outdated` 能看到有没有新版本。
-- 每个版本的变化写在 [CHANGELOG.md](CHANGELOG.md)，本仓库会为每个版本打一个同名 tag（如 `v2.10.1`）。
+- Simulator data lives in memory only and is gone after a page reload or a new simulator; every result carries `simulated: true`.
+- The simulator does not fully enforce the platform's declaration, permission, quota and rate checks. Upload a real game package to verify before release. Do not turn on the `firstParty` option when building a third-party game.
+- Friends, direct messages and multiplayer are not open to third parties yet; see the Features tables.
 
-## 反馈
+## Versions and updates
 
-- Bug 和接入问题：在本仓库提 [Issue](https://github.com/LumioGames/LumioSDK/issues/new/choose)。
-- 交流：[QQ 群 972220164](https://qm.qq.com/q/PGkXh4tCyQ)。
-- 完整文档：[开发者中心](https://lumiogames.cn/studio/)首页「文档与 Lumio SDK」。
+- The SDK is published only on npm. A published version never changes; fixes and new features come as new versions.
+- Install with a full version number and upgrade when you choose; `npm outdated` shows whether a newer one exists. Add `--save-exact` to pin it in `package.json` too.
+- Each version's changes are in the [changelog](CHANGELOG.md), and this repository tags each version with the same name (for example `v2.10.1`).
 
-## 许可
+## Docs
 
-许可协议待定，确定前请勿再分发本仓库内容。见 [LICENSE](LICENSE)。
+| Doc | Contents |
+| :-- | :-- |
+| "Docs and Lumio SDK" on the [Developer Center](https://lumiogames.cn/studio/) | Full feature reference and the author API publishing flow |
+| [Simulator example](examples/simulator-save-leaderboard/index.mjs) | Saves, conflicts, leaderboards, and what closed features return |
+| [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) | |
+
+## License
+
+Lumio SDK is source-available under the [PolyForm Shield License 1.0.0](https://polyformproject.org/licenses/shield/1.0.0), with an Additional Permission and a Trademarks notice from LumioGames. The full text is in [LICENSE](LICENSE). In short:
+
+| You may | You may not |
+| :-- | :-- |
+| Use Lumio SDK in games, apps and websites, including paid commercial products | Use Lumio SDK or a changed version to build a competing game SDK, game platform, game publishing or hosting service, or game development tool, paid or free |
+| Star, fork, change and send pull requests; use it for learning, teaching and research | Republish it under another name or skin, or change it to connect to another platform |
+| Say "uses Lumio SDK" or "published on Lumio" in your game | Use the Lumio or LumioGames names and logos as your own brand |
+
+For any other use, contact us through the [Developer Center](https://lumiogames.cn/studio/) or the community groups above for a separate license. The English text in LICENSE is what counts.
+
+<br>
+
+<p align="center"><a href="https://lumiogames.cn/studio/"><img src=".github/readme/brand.en.svg" width="100%" alt="Lumio SDK is made by LumioGames · Lumio, games bring joy · Open the Developer Center"></a></p>
