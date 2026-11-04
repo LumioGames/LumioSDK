@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://lumiogames.cn/studio/"><img src=".github/readme/hero.zh-CN.svg" width="100%" alt="LumioGames 出品 · Lumio SDK：一个 npm 包，把 H5 游戏接上 Lumio 平台"></a>
+<a href="https://lumio.games/studio/"><img src=".github/readme/hero.zh-CN.svg" width="100%" alt="LumioGames 出品 · Lumio SDK：一个 npm 包，把 H5 游戏接上 Lumio 平台"></a>
 
-**[开发者中心 lumiogames.cn/studio](https://lumiogames.cn/studio/)** &nbsp;·&nbsp; **[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; **[空白游戏模板](https://github.com/LumioGames/LumioTemplate)** &nbsp;·&nbsp; [English](README.en.md) &nbsp;·&nbsp; 简体中文
+**[npm](https://www.npmjs.com/package/@lumiogames/sdk)** &nbsp;·&nbsp; **[LumioTemplate](https://github.com/LumioGames/LumioTemplate)** &nbsp;·&nbsp; **[LGUI](https://github.com/LumioGames/LGUI)** &nbsp;·&nbsp; [English](README.en.md) &nbsp;·&nbsp; 简体中文
 
-[![LumioGames 出品](https://img.shields.io/badge/LumioGames-%E5%87%BA%E5%93%81-6659DB?style=flat-square&labelColor=171C34&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iOTYiIGhlaWdodD0iOTYiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzY2NTlkYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlhYTZmZiIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMjkiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyNSIgeT0iMjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNDIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI0NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjYiLz48cmVjdCB4PSI2NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiM1ZGUyYzYiLz48cGF0aCBkPSJNNzAgMTlDNzEuNTYgMjguMSA3My45IDMwLjQ0IDgzIDMyQzczLjkgMzMuNTYgNzEuNTYgMzUuOSA3MCA0NUM2OC40NCAzNS45IDY2LjEgMzMuNTYgNTcgMzJDNjYuMSAzMC40NCA2OC40NCAyOC4xIDcwIDE5WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo%3D)](https://lumiogames.cn/)
+[![LumioGames 出品](https://img.shields.io/badge/LumioGames-%E5%87%BA%E5%93%81-6659DB?style=flat-square&labelColor=171C34&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iOTYiIGhlaWdodD0iOTYiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzY2NTlkYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlhYTZmZiIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMjkiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIyNSIgeT0iMjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNDIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyNSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI0NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjYiLz48cmVjdCB4PSI2NSIgeT0iNjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiM1ZGUyYzYiLz48cGF0aCBkPSJNNzAgMTlDNzEuNTYgMjguMSA3My45IDMwLjQ0IDgzIDMyQzczLjkgMzMuNTYgNzEuNTYgMzUuOSA3MCA0NUM2OC40NCAzNS45IDY2LjEgMzMuNTYgNTcgMzJDNjYuMSAzMC40NCA2OC40NCAyOC4xIDcwIDE5WiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo%3D)](https://lumio.games/studio/)
 [![npm](https://img.shields.io/npm/v/@lumiogames/sdk?style=flat-square&color=6659DB&labelColor=171C34)](https://www.npmjs.com/package/@lumiogames/sdk)
 [![node](https://img.shields.io/badge/node-%E2%89%A524.18-5DE2C6?style=flat-square&labelColor=171C34)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E-9AA6FF?style=flat-square&labelColor=171C34)](#安装)
@@ -12,11 +12,12 @@
 
 </div>
 
-<h3 align="center">加入开发者社群</h3>
+<h3 align="center">加入开发者社群 · 访问官网</h3>
 
 <p align="center">
   <a href="https://qm.qq.com/q/PGkXh4tCyQ"><img src=".github/readme/qr-qq.zh-CN.svg" width="250" alt="扫码或点击加入 QQ 交流群 972220164"></a>
   <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b24vf257-5a2b-41ce-935e-bc4ce19dc396"><img src=".github/readme/qr-feishu.zh-CN.svg" width="250" alt="扫码或点击加入飞书话题群 LumioGame 开发者社区"></a>
+  <a href="https://lumio.games/studio/"><img src=".github/readme/studio-card.zh-CN.svg" width="250" alt="打开 Lumio 开发者中心 lumio.games/studio"></a>
 </p>
 
 ---
@@ -307,4 +308,4 @@ Lumio SDK 源码公开，采用 [PolyForm Shield 1.0.0](https://polyformproject.
 
 <br>
 
-<p align="center"><a href="https://lumiogames.cn/studio/"><img src=".github/readme/brand.zh-CN.svg" width="100%" alt="Lumio SDK 由 LumioGames 出品 · Lumio，游戏创造快乐 · 打开开发者中心"></a></p>
+<p align="center"><a href="https://lumio.games/studio/"><img src=".github/readme/brand.zh-CN.svg" width="100%" alt="Lumio SDK 由 LumioGames 出品 · Lumio，游戏创造快乐 · 打开开发者中心"></a></p>
