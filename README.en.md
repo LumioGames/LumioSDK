@@ -82,6 +82,7 @@ The block below is written for the agent.
 > 5. Check `ok` on every call. On failure read `failure.code`; on save writes also check `value.conflict`. Never fake success.
 > 6. Write `lumio.json` at the package root declaring the capabilities, save slots and leaderboard fields in use. The entry HTML does not need to reference `lumio-bootstrap.js`. See "Packaging and upload" in this README.
 > 7. Use only the features marked available in the Features tables. Friends, direct messages and multiplayer are not open yet.
+> 8. There are two ways to publish; let the user choose: A. you build the ZIP and the user uploads it in the Developer Center (see "Packaging and upload"); B. the user gives you an author API key and you publish directly as in ["Publish with an API key"](#publish-with-an-api-key). Read the key only from an environment variable; never put it in code, commit it or pack it into the ZIP.
 
 By hand:
 
@@ -208,6 +209,60 @@ To upload:
 2. On the game's Versions page, choose the ZIP, enter the version number and release notes, and click Upload.
 3. When the checks finish, select the draft version and click Submit for review.
 4. See the review result and any requested changes in the version history. Submitting is not the same as going live; the live version shown in the Developer Center is what players get.
+
+## Publish with an API key
+
+Besides uploading a ZIP by hand in the Developer Center, an AI agent or a script can publish with an author API key: one key creates the game, uploads it, edits its details, submits it for review and checks whether it went live. The essentials are below; the full guide is the platform document [author-api.md](https://lumiogames.cn/assets/studio/docs/author-api.md) (in Chinese).
+
+**1. Get a key**
+
+- Apply as an author first, then create a key on the Developer Center's [author API keys](https://lumiogames.cn/studio/settings/credentials) page. It needs at least the five scopes below, and the game scope must be "all my games", because the game has no game key yet when you create it. You can also restrict IPs and set an expiry; the key never has more permissions than you have in your team.
+
+  ```json
+  {
+    "purpose": "author",
+    "scopes": ["games.create", "games.upload", "games.metadata.update", "games.submit", "games.review.read"],
+    "gameScope": { "mode": "all" }
+  }
+  ```
+
+- The key is shown once and looks like `lmo_api_…`. Keep it only in an environment variable or a private file on your machine that only you can read. Never put it in code, commit it, pack it into the ZIP, or show it in command-line arguments, screenshots or logs.
+- Old `agent:publish` credentials return `credential_legacy`; create a new author API key.
+
+**2. Request order**
+
+Every request carries `Authorization: Bearer <key>` except the file PUT, which carries neither the key nor cookies. Give each POST and PATCH its own fixed `Idempotency-Key`, and reuse that key when you resend the same request.
+
+| Step | Request | Body and checks |
+| :-- | :-- | :-- |
+| 1. Create the game | `POST /api/v2/publish/games` | `{title,slug}`; `slug` is optional. Use the `gameKey` from the response |
+| 2. Request an upload | `POST /api/v2/publish/games/:gameKey/uploads` | `{purpose:"package",label,maxBytes,contentType:"application/zip",releaseNotes}`; use `label` `1.0.0` for the first version, and `maxBytes` must equal the ZIP's real size in bytes |
+| 3. Upload the file | `PUT <uploadUrl>` | Use the exact `uploadUrl` and `headers` from the response and PUT the raw file, not multipart. The ticket is valid for 24 hours (`expiresAt`); if the PUT breaks, PUT the whole file to the same `uploadUrl` again |
+| 4. Complete the upload | `POST /api/v2/publish/games/:gameKey/uploads/:uploadId/complete` | `{}`; `unpacking` only means the platform accepted it |
+| 5. Wait for processing | `GET /api/studio/games/:gameKey/uploads/:uploadId` | Poll until `stage=complete` and `failed=false`, and keep the `versionId`; on `failed=true`, fix the package per `reason` and upload again |
+| 6. Edit details | `GET`, then `PATCH /api/v2/publish/games/:gameKey/metadata` | GET returns only `{gameKey,revision}`; PATCH sends `expectedRevision` (that `revision`) plus the fields to change. It took effect only if the response is `applied` with `baseRevision` equal to `expectedRevision` |
+| 7. Submit for review | `POST /api/v2/publish/games/:gameKey/versions/:versionId/submit` | `{}`; check that the response's `gameKey` and `versionId` match and `packageHash` equals the ZIP's SHA256 |
+| 8. Read the review | `GET /api/studio/games/:gameKey/versions/:versionId/review` | On `checking` or `pending`, check again later with a retry limit; only `approved` means approved. A 404 right after submitting only means the review is not visible yet |
+| 9. Confirm it is live | `GET /api/play/:gameKey/launch` | It is live only when this returns your `gameKey` and `versionId`; then open the returned `frameUrl` to check the page |
+
+The first release needs `oneLiner` (one sentence, at most 40 characters), `category`, `orientation` (`landscape`, `portrait` or `both`) and `coverKey`. `category` is one of `休闲` `解谜` `动作` `冒险` `角色扮演` `策略` `模拟经营` `射击` `对战` `撤离` `竞速` `体育` `卡牌` `塔防` `音乐` `剧情` `恐怖` `益智` `其他`. Optional: `title`, `screenshotKeys`, `videoKey`, `tags`, `descriptionMd`.
+
+Cover, screenshots and video go through steps 2 to 5 as well, with `purpose` set to `cover`, `screenshot` or `video` and `contentType` set to the file's real type (`image/png`, `image/jpeg`, `image/webp`, `video/mp4`, `video/webm`). When done, put the response's `objectKey` into the details. The cover is 16:9; up to 5 screenshots; video up to 3 minutes.
+
+To update a game, do not create a new one: start at step 2 with a package whose version is higher than the last, edit details if needed, and submit.
+
+**3. When something fails**
+
+| Response | What to do |
+| :-- | :-- |
+| `429 platform.budget` | The platform server is busy. Wait for the seconds in the `Retry-After` header and resend the same request with the same `Idempotency-Key`, at most 3 times |
+| `429 platform.quota_exceeded` | Over the rate quota (by default 120 requests per minute per key). Do not retry automatically; slow down |
+| `platform.studio.metadata_incomplete` | The first release is missing details; `reason` lists them. Fill them in and submit again |
+| `platform.forbidden` with a `reason` starting with `content_` | The details failed the content check; change the text or image and save again |
+| `platform.conflict` | The details changed since you read them; GET again and decide what to change |
+| Any other failure, or a review result of `failed`, `changes_requested` or `superseded` | Stop, do not retry automatically, and give the user the `gameKey`, `uploadId`, `versionId` and `requestId` |
+
+On Windows you can use the platform's curl example script `author-publish.ps1`; see section 5 of the full guide for how to download and run it.
 
 ## Common errors
 

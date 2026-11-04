@@ -82,6 +82,7 @@ friends platform.not_granted
 > 5. 每个调用都检查 `ok`；失败时看 `failure.code`，写存档还要检查 `value.conflict`。不要伪造成功。
 > 6. 在包根目录写 `lumio.json`，声明用到的能力、存档槽和上榜字段；入口 HTML 不需要引用 `lumio-bootstrap.js`。写法见本 README「打包上传」一节。
 > 7. 只用下面「功能」表里开放的能力。好友、私信、联机暂不开放。
+> 8. 发布方式有两种，让用户选：A. 你打好 ZIP，用户自己到开发者中心上传（见「打包上传」）；B. 用户给你作者 API 密钥，你按[「用 API 密钥发布」](#用-api-密钥发布)直接发布。密钥只从环境变量读，不写进代码、不提交、不打进 ZIP。
 
 自己装：
 
@@ -208,6 +209,60 @@ ZIP 根目录放 `index.html`、`lumio.json` 和运行需要的文件，不要�
 2. 在作品的「版本」页选择 ZIP，填写版本号和更新说明，点「上传版本」。
 3. 检查完成后选中草稿版本，点「提交审核」。
 4. 在版本记录里看审核结果和整改提示。提交成功不等于上线，以开发者中心显示的线上版本为准。
+
+## 用 API 密钥发布
+
+除了在开发者中心手动上传 ZIP，也可以让 AI Agent 或脚本用作者 API 密钥直接发布：同一把密钥完成创建作品、上传、修改资料、提交审核和查询上线结果。下面是要点，完整说明见平台文档 [author-api.md](https://lumiogames.cn/assets/studio/docs/author-api.md)。
+
+**1. 准备密钥**
+
+- 先完成作者申请，再到开发者中心的[作者 API 密钥](https://lumiogames.cn/studio/settings/credentials)页新建密钥。权限至少包含下面五项，作品范围选「我的全部作品」，因为创建作品时还没有游戏键。可以再限制 IP 和到期时间；实际权限还会和你在团队里的权限取交集。
+
+  ```json
+  {
+    "purpose": "author",
+    "scopes": ["games.create", "games.upload", "games.metadata.update", "games.submit", "games.review.read"],
+    "gameScope": { "mode": "all" }
+  }
+  ```
+
+- 密钥只显示一次，格式是 `lmo_api_…`。只放在环境变量或本机只有你能读的私密文件里；不要写进代码，不要提交到仓库，不要打进 ZIP，也不要出现在命令行参数、截图和日志里。
+- 旧的 `agent:publish` 凭据会返回 `credential_legacy`，要新建作者 API 密钥。
+
+**2. 请求顺序**
+
+除了上传文件的 PUT，每个请求都带 `Authorization: Bearer <密钥>`；PUT 不带密钥和 Cookie。每个 POST、PATCH 用一个固定的 `Idempotency-Key`，重发同一个请求时不换键。
+
+| 步骤 | 请求 | 请求体和要点 |
+| :-- | :-- | :-- |
+| 1. 创建作品 | `POST /api/v2/publish/games` | `{title,slug}`，`slug` 可省略；以回执里的 `gameKey` 为准 |
+| 2. 申请上传 | `POST /api/v2/publish/games/:gameKey/uploads` | `{purpose:"package",label,maxBytes,contentType:"application/zip",releaseNotes}`；首个版本 `label` 用 `1.0.0`，`maxBytes` 等于 ZIP 的真实字节数 |
+| 3. 上传文件 | `PUT <uploadUrl>` | 用回执里原样的 `uploadUrl` 和 `headers`，PUT 原文件，不用 multipart。票据 24 小时有效（`expiresAt`），中断时对同一个 `uploadUrl` 重新 PUT 整个文件 |
+| 4. 完成上传 | `POST /api/v2/publish/games/:gameKey/uploads/:uploadId/complete` | `{}`；返回 `unpacking` 只表示平台已接受处理 |
+| 5. 等处理完 | `GET /api/studio/games/:gameKey/uploads/:uploadId` | 轮询到 `stage=complete` 且 `failed=false`，记下 `versionId`；`failed=true` 时按 `reason` 改包后重新上传 |
+| 6. 修改资料 | `GET`，再 `PATCH /api/v2/publish/games/:gameKey/metadata` | GET 只返回 `{gameKey,revision}`；PATCH 带 `expectedRevision`（就是这个 `revision`）和要改的字段。回执是 `applied` 且 `baseRevision` 等于 `expectedRevision` 才算生效 |
+| 7. 提交审核 | `POST /api/v2/publish/games/:gameKey/versions/:versionId/submit` | `{}`；核对回执里的 `gameKey`、`versionId`，以及 `packageHash` 等于 ZIP 的 SHA256 |
+| 8. 查审核结果 | `GET /api/studio/games/:gameKey/versions/:versionId/review` | `checking`、`pending` 时隔一会儿再查，设好次数上限；`approved` 才是通过。刚提交时返回 404 只表示审核单还没生成 |
+| 9. 确认上线 | `GET /api/play/:gameKey/launch` | 返回本次的 `gameKey` 和 `versionId` 才算上线，再打开回执里的 `frameUrl` 检查页面 |
+
+首次发布的资料必填：`oneLiner`（一句话介绍，40 字以内）、`category`、`orientation`（`landscape` 横屏、`portrait` 竖屏、`both` 都行）和 `coverKey`。`category` 取 `休闲` `解谜` `动作` `冒险` `角色扮演` `策略` `模拟经营` `射击` `对战` `撤离` `竞速` `体育` `卡牌` `塔防` `音乐` `剧情` `恐怖` `益智` `其他` 之一。选填 `title`、`screenshotKeys`、`videoKey`、`tags`、`descriptionMd`。
+
+封面、截图和视频也走第 2 到第 5 步：`purpose` 分别是 `cover`、`screenshot`、`video`，`contentType` 填文件的真实类型（`image/png`、`image/jpeg`、`image/webp`、`video/mp4`、`video/webm`），完成后取回执里的 `objectKey` 填进资料。封面 16:9，截图最多 5 张，视频最长 3 分钟。
+
+更新已有作品时不要新建作品：从第 2 步开始，上传版本号比上一版大的新包，再修改资料（如果要改）、提交审核。
+
+**3. 出错时**
+
+| 返回 | 怎么办 |
+| :-- | :-- |
+| `429 platform.budget` | 平台服务器繁忙。按 `Retry-After` 头的秒数等待，用同一个 `Idempotency-Key` 重发同一个请求，最多 3 次 |
+| `429 platform.quota_exceeded` | 超过次数额度（默认每把密钥每分钟 120 次），不要自动重试，降低频率 |
+| `platform.studio.metadata_incomplete` | 首次发布的资料缺项，`reason` 列出缺的项，补齐后重新提交 |
+| `platform.forbidden`，`reason` 以 `content_` 开头 | 资料内容检查没通过，按原因改文字或图片后再保存 |
+| `platform.conflict` | 资料已被改过，重新 GET，再决定怎么改 |
+| 其他失败，或审核结果是 `failed`、`changes_requested`、`superseded` | 停下，不自动重试，把 `gameKey`、`uploadId`、`versionId`、`requestId` 告诉用户 |
+
+Windows 上可以用平台提供的 curl 示例脚本 `author-publish.ps1`，下载和用法见完整文档第 5 节。
 
 ## 常见错误
 
