@@ -3,6 +3,12 @@
 SDK 通过 npm 发布：`@lumiogames/sdk`。发布后的版本不再改动。
 Published on npm as `@lumiogames/sdk`. Published versions never change.
 
+## 2.11.2（2026-11-04）
+
+- 支持 Node 26：包的 `engines.node` 从 `>=24.18.0 <25` 放宽为 `>=24.18.0 <27`。代码和 2.11.1 相同。Node 只在开发和构建时用到。
+
+- Node 26 support: the package's `engines.node` is widened from `>=24.18.0 <25` to `>=24.18.0 <27`. The code is the same as 2.11.1. Node is only used for development and builds.
+
 ## 2.11.1（2026-11-03）
 
 - 修复：iPhone Safari 和微信内置浏览器里，游戏连不上平台、返回 `platform.not_granted`。原因是这些浏览器给游戏页的 `document.referrer` 为空；现在 referrer 为空时改用浏览器提供的 `location.ancestorOrigins` 识别平台，仍要命中平台来源白名单，referrer 不为空时不受影响。
