@@ -76,8 +76,8 @@ friends platform.not_granted
 >
 > 按顺序做。任何一步失败都停下，把错误原文告诉用户，不要跳过。
 >
-> 1. 运行 `node -v`，要求 24.18 或更高、低于 25。没有就请用户自己装，不要替用户装。
-> 2. 在用户的游戏工程里运行 `npm i @lumiogames/sdk@2.11.1`。工程要用打包工具（Vite、esbuild、webpack 等）构建成静态文件。
+> 1. 运行 `node -v`，要求 24.18 或更高、低于 27（Node 24 或 Node 26 都可以）。没有就请用户自己装，不要替用户装。
+> 2. 在用户的游戏工程里运行 `npm i @lumiogames/sdk@2.11.2`。工程要用打包工具（Vite、esbuild、webpack 等）构建成静态文件。
 > 3. 先接本地模拟器：在开发页面里用 `createLumioSimulator()`（入口 `@lumiogames/sdk/simulator`），把存档、排行榜等逻辑跑通。
 > 4. 再接正式平台：用 `connectLumioFromLaunch()`（入口 `@lumiogames/sdk`）。连接失败要显示错误，不要自动换成模拟器。
 > 5. 每个调用都检查 `ok`；失败时看 `failure.code`，写存档还要检查 `value.conflict`。不要伪造成功。
@@ -88,7 +88,7 @@ friends platform.not_granted
 自己装：
 
 ```sh
-npm i @lumiogames/sdk@2.11.1
+npm i @lumiogames/sdk@2.11.2
 ```
 
 | 入口 | 用途 |
@@ -97,7 +97,7 @@ npm i @lumiogames/sdk@2.11.1
 | `@lumiogames/sdk/simulator` | 本地模拟器：`createLumioSimulator()` |
 | `@lumiogames/sdk/adapters` | Cocos、Phaser、Godot、Unity 的轻量适配 |
 
-包要求 Node 24.18 或更高（低于 25），只在开发和构建时用到。上传的是构建好的静态文件，玩家浏览器不会读 `node_modules`。
+包要求 Node 24.18 或更高（低于 27，Node 24 或 Node 26 都可以），只在开发和构建时用到。上传的是构建好的静态文件，玩家浏览器不会读 `node_modules`。
 
 ## 功能
 
