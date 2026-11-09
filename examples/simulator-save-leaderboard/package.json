@@ -6,6 +6,6 @@
     "start": "node index.mjs"
   },
   "dependencies": {
-    "@lumiogames/sdk": "2.11.1"
+    "@lumiogames/sdk": "2.11.2"
   }
 }

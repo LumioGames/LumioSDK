@@ -76,8 +76,8 @@ The block below is written for the agent.
 >
 > Go in order. If any step fails, stop and show the user the exact error. Do not skip steps.
 >
-> 1. Run `node -v`. It must be 24.18 or later and below 25. If not, ask the user to install it; do not install it for them.
-> 2. In the user's game project, run `npm i @lumiogames/sdk@2.11.1`. The project must be built into static files with a bundler (Vite, esbuild, webpack and so on).
+> 1. Run `node -v`. It must be 24.18 or later and below 27 (Node 24 or Node 26). If not, ask the user to install it; do not install it for them.
+> 2. In the user's game project, run `npm i @lumiogames/sdk@2.11.2`. The project must be built into static files with a bundler (Vite, esbuild, webpack and so on).
 > 3. Start with the local simulator: use `createLumioSimulator()` (entry `@lumiogames/sdk/simulator`) on the dev page and get saves, leaderboards and other logic working.
 > 4. Then connect to the platform with `connectLumioFromLaunch()` (entry `@lumiogames/sdk`). If the connection fails, show the error; never fall back to the simulator.
 > 5. Check `ok` on every call. On failure read `failure.code`; on save writes also check `value.conflict`. Never fake success.
@@ -88,7 +88,7 @@ The block below is written for the agent.
 By hand:
 
 ```sh
-npm i @lumiogames/sdk@2.11.1
+npm i @lumiogames/sdk@2.11.2
 ```
 
 | Entry | Use |
@@ -97,7 +97,7 @@ npm i @lumiogames/sdk@2.11.1
 | `@lumiogames/sdk/simulator` | Local simulator: `createLumioSimulator()` |
 | `@lumiogames/sdk/adapters` | Small adapters for Cocos, Phaser, Godot and Unity |
 
-The package needs Node 24.18 or later (below 25), only for development and builds. You upload the built static files; players' browsers never read `node_modules`.
+The package needs Node 24.18 or later (below 27; Node 24 or Node 26), only for development and builds. You upload the built static files; players' browsers never read `node_modules`.
 
 ## Features
 
